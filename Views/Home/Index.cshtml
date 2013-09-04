@@ -1,0 +1,25 @@
+﻿@model IEnumerable<NorthwindMobile.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div data-role="view" id="home" data-title="Categories" data-layout="main" data-switch-to="home">
+    
+    <ul data-role="listview">
+
+        @foreach (var item in Model) {
+            <li>
+                <a href="categories?categoryId=@item.CategoryId">
+                    <h1>@item.CategoryName</h1>
+                    <p>
+                        @item.CategoryDescription
+                    </p>
+                </a>
+            </li>
+        }
+
+    </ul>
+
+</div>

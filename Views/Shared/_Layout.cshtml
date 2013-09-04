@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/kendo/kendo.mobile.flat.min.css")    
+</head>
+<body>
+    
+    @RenderBody()
+
+    <div data-role="layout" data-id="main">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+        <div data-role="footer">
+            <div data-role="tabstrip" id="tabstrip">
+                <a href="/home" data-icon="home"></a>
+                <a href="/ settings" data-icon="settings"></a>
+            </div>
+        </div>   
+    </div>
+
+    @Scripts.Render("~/Scripts/jquery.min.js")
+    @Scripts.Render("~/Scripts/kendo/kendo.mobile.min.js")
+
+    <script>
+
+            new kendo.mobile.Application(document.body, {
+                skin: "flat",
+                serverNavigation: "true",
+                init: function () {
+                // ** this switches the tabstrip to the right view **
+                // get the current view's id
+                var tabState = $("[data-role='view']").data("switchTo");
+                    // tell the tabstrip to switch to that item
+                if (tabState) {
+                    $("#tabstrip").getKendoMobileTabStrip().switchTo(tabState);
+                }
+
+                //    // attach an event listener to all back buttons
+                //    $("[data-role='backbutton']").on("click", function () {
+                //        window.history.back();
+                //    });
+                }
+            });
+
+    </script>
+    
+</body>
+</html>

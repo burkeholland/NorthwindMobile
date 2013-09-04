@@ -1,0 +1,24 @@
+﻿@model NorthwindMobile.Models.Category
+
+@{
+    ViewBag.Title = Model.CategoryName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div data-role="view"  data-layout="main" id="products" data-title="@Model.CategoryName">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <a href="#" data-role="backbutton" data-align="left">Back</a>
+        </div>
+    </div>
+    <ul data-role="listview">
+        @foreach (var item in @Model.Products) {
+            <li>
+                <a href="/products?id=@item.ProductId">@item.ProductName</a>
+            </li>
+        }
+    </ul>
+</div>    
+

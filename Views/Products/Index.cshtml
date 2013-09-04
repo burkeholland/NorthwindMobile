@@ -1,0 +1,50 @@
+﻿@model NorthwindMobile.Models.Product
+
+@{
+    ViewBag.Title = @Model.ProductName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div data-role="view" data-layout="main" data-title="@Model.ProductName" id="Products">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <a data-role="backbutton" data-align="left">Back</a>
+        </div>
+    </div>
+    <form action="products/update" method="POST">
+        <ul data-role="listview">
+            <li>
+                Product Name
+                <input type="text" value="@Model.ProductName" />
+            </li>
+            <li>
+                Unit Price
+                <input type="number" value="@Model.UnitPrice" />
+            </li>
+            <li>
+                Units In Stock
+                <input type="number" value="@Model.UnitsInStock" />
+            </li>
+            <li>
+                Units On Order
+                <input type="number" value="@Model.UnitsOnOrder" />
+            </li>
+            <li>
+                Reorder Level
+                <input type="number" value="@Model.ReorderLevel" />
+            </li>
+            <li>
+                Quantity Per Unit
+                <input type="number" value="@Model.QuantityPerUnit" />
+            </li>
+            <li>
+                <label>
+                    Discontinued
+                    <input type="checkbox" checked="@Model.Discontinued" />
+                </label>
+            </li>
+        </ul>
+        <button data-role="button" type="submit">Update</button>
+    </form>
+</div>
